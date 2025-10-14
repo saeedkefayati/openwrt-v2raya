@@ -9,7 +9,7 @@ update_v2raya() {
     opkg update
     
     info "Updating V2rayA package..."
-    if ! opkg install "$PASSWALL_PACKAGE"; then
+    if ! opkg install "$V2RAYA_PACKAGE"; then
         error "Update failed!"
         return 1
     fi

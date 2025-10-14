@@ -106,14 +106,14 @@ show_core_status() {
 v2raya_service() {
     action="$1" # 'start', 'stop', 'restart', etc.
 
-    if ! [ -x "$PASSWALL_SERVICE_DIR" ]; then
+    if ! [ -x "$V2RAYA_SERVICE_DIR" ]; then
         warn "V2rayA service not found!"
         return 1 
     fi
 
     mkdir -p /tmp/etc/v2raya
 
-    if "$PASSWALL_SERVICE_DIR" "$action"; then
+    if "$V2RAYA_SERVICE_DIR" "$action"; then
         success "V2rayA service '$action' command completed successfully."
         return 0
     else

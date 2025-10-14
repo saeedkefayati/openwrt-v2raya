@@ -34,7 +34,7 @@ get_openwrt_info
 while true; do
     clear_terminal
     show_banner
-    show_centered_text "Now you can use '${PASSWALL_COMMAND}' command"
+    show_centered_text "Now you can use '${V2RAYA_COMMAND}' command"
     show_separator
     show_openwrt_info
     show_core_status

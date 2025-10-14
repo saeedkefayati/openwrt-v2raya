@@ -36,10 +36,10 @@ install_v2raya() {
 
     # Step 5: Install V2rayA
     info "Installing V2rayA..."
-    if opkg list-installed | grep -q "$PASSWALL_PACKAGE"; then
+    if opkg list-installed | grep -q "$V2RAYA_PACKAGE"; then
         info "V2rayA already installed, skipping."
     else
-        opkg install "$PASSWALL_PACKAGE" || { error "Failed to install V2rayA"; return 1; }
+        opkg install "$V2RAYA_PACKAGE" || { error "Failed to install V2rayA"; return 1; }
     fi
 
     # Step 6: Install Package Dependency Based On OS Version
