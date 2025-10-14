@@ -8,8 +8,8 @@
 # ================================
 REPO_URL="https://github.com/saeedkefayati/openwrt-v2raya.git"
 V2RAYA_INSTALL_DIR="/root/free-internet/v2raya"
-V2RAYA_BIN_DIR="/usr/bin/pw1"
-V2RAYA_COMMAND="pw1"
+V2RAYA_BIN_DIR="/usr/bin/v2a"
+V2RAYA_COMMAND="v2a"
 
 # ================================
 # Step 1: Clone or update repository
