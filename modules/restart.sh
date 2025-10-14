@@ -5,7 +5,7 @@
 
 
 restart_passwall() {
-    info "Restarting Passwall v1 service..."
+    info "Restarting V2rayA service..."
     passwall_service restart
     sleep 3
 }

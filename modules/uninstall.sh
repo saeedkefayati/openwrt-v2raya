@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# uninstall.sh - Uninstall Passwall v1
+# uninstall.sh - Uninstall V2rayA
 #========================================
 
 uninstall_passwall() {
@@ -32,6 +32,6 @@ uninstall_passwall() {
     info "Updating package lists..."
     opkg update
 
-    success "Passwall v1 uninstalled successfully!"
+    success "V2rayA uninstalled successfully!"
     sleep 3
 }

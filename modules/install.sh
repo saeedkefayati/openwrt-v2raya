@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# install.sh - Install Passwall v1
+# install.sh - Install V2rayA
 #========================================
 
 install_passwall() {
@@ -34,8 +34,8 @@ install_passwall() {
     info "Updating package lists..."
     opkg update || { error "Failed to update package lists"; return 1; }
 
-    # Step 5: Install Passwall v1
-    info "Installing Passwall v1..."
+    # Step 5: Install V2rayA
+    info "Installing V2rayA..."
     if opkg list-installed | grep -q "$PASSWALL_PACKAGE"; then
         info "Passwall already installed, skipping."
     else
@@ -79,7 +79,7 @@ install_passwall() {
     info "Starting service with new settings..."
     passwall_service start
 
-    success "Passwall v1 installation completed successfully!"
+    success "V2rayA installation completed successfully!"
     sleep 3
 }
 

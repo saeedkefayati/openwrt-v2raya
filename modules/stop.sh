@@ -5,7 +5,7 @@
 
 
 stop_passwall() {
-    info "Stopping Passwall v1 service..."
+    info "Stopping V2rayA service..."
     passwall_service stop
     sleep 3
 }

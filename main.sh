@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# Passwall v1 Main Script
+# V2rayA Main Script
 #========================================
 
 # -------------------------------
@@ -39,7 +39,7 @@ while true; do
     show_openwrt_info
     show_core_status
 
-    echo "Select an operation for Passwall v1:"
+    echo "Select an operation for V2rayA:"
     i=1
     while true; do
         eval entry=\$MENU_${i}

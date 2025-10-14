@@ -5,7 +5,7 @@
 
 
 exit_passwall() {
-    info "Exiting Passwall v1..."
+    info "Exiting V2rayA..."
     exit 0
 }
 

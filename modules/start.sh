@@ -5,7 +5,7 @@
 
 
 start_passwall() {
-    info "Starting Passwall v1 service..."
+    info "Starting V2rayA service..."
     passwall_service start
     sleep 3
 }

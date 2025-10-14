@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# update.sh - Update Passwall v1
+# update.sh - Update V2rayA
 #========================================
 
 
@@ -8,13 +8,13 @@ update_passwall() {
     info "Updating package lists..."
     opkg update
     
-    info "Updating Passwall v1 package..."
+    info "Updating V2rayA package..."
     if ! opkg install "$PASSWALL_PACKAGE"; then
         error "Update failed!"
         return 1
     fi
 
-    info "Restarting Passwall v1 service after update..."
+    info "Restarting V2rayA service after update..."
     passwall_service restart
 
     success "Update completed successfully!"

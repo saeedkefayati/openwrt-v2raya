@@ -5,7 +5,7 @@
 
 
 disable_passwall() {
-    info "Disabling Passwall v1 service..."
+    info "Disabling V2rayA service..."
     passwall_service disable
     sleep 3
 }
