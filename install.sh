@@ -6,8 +6,8 @@
 # ================================
 # Variables
 # ================================
-REPO_URL="https://github.com/saeedkefayati/openwrt-passwall1.git"
-PASSWALL_INSTALL_DIR="/root/free-internet/passwall1"
+REPO_URL="https://github.com/saeedkefayati/openwrt-v2raya.git"
+PASSWALL_INSTALL_DIR="/root/free-internet/v2raya"
 PASSWALL_BIN_DIR="/usr/bin/pw1"
 PASSWALL_COMMAND="pw1"
 
