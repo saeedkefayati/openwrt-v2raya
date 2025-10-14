@@ -87,7 +87,7 @@ show_core_status() {
         if [ ! -x "$path" ]; then
             status="${RED}Not Installed${NC}"
         else
-            if ps -w | grep -v "grep" | grep -q -E "xray|v2ray"; then
+            if ps -w | grep -v "grep" | grep -q -w "$name"; then
                 status="${GREEN}Running${NC}"
             else
                 status="${YELLOW}Stopped${NC}"
