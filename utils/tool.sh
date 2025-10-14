@@ -133,11 +133,11 @@ add_v2raya_feeds() {
 
     case "$RELEASE_TYPE" in
         SNAPSHOT|RC|BETA|STABLE)
-            BASE_URL="https://downloads.sourceforge.net/project/v2raya/openwrt/$ARCH"
+            BASE_URL="https://master.dl.sourceforge.net/project/v2raya/openwrt/$ARCH"
             ;;
         *)
             warn "Unknown RELEASE_TYPE, defaulting to releases path"
-            BASE_URL="https://downloads.sourceforge.net/project/v2raya/openwrt/$ARCH"
+            BASE_URL="https://master.dl.sourceforge.net/project/v2raya/openwrt/$ARCH"
             ;;
     esac
 
