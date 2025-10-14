@@ -29,8 +29,8 @@ uninstall_v2raya() {
     # Remove the service script file left by opkg
     [ -f "$V2RAYA_SERVICE_DIR" ] && rm -f "$V2RAYA_SERVICE_DIR" && success "Removed service script."
     
-    # Remove the UCI config file
-    [ -f "/etc/config/v2raya" ] && rm -f "/etc/config/v2raya" && success "Removed UCI config file."
+    # # Remove the UCI config file
+    # [ -f "/etc/config/v2raya" ] && rm -f "/etc/config/v2raya" && success "Removed UCI config file."
 
     # Step 5: Update package lists
     info "Updating package lists..."
