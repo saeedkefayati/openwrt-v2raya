@@ -146,7 +146,7 @@ add_v2raya_feeds() {
     if grep -q "$FEED_NAME" "$CUSTOM_FEEDS_FILE" 2>/dev/null; then
         info "Feed $FEED_NAME already exists, skipping."
     else
-        echo "src/gz $FEED_NAME $BASE_URL/$FEED_NAME" >> "$CUSTOM_FEEDS_FILE"
+        echo "src/gz $FEED_NAME $BASE_URL" >> "$CUSTOM_FEEDS_FILE"
         success "Added feed: $FEED_NAME"
     fi
 }
