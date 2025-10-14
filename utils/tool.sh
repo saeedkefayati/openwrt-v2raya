@@ -101,30 +101,30 @@ show_core_status() {
 
 
 # -------------------------------
-# Passwall Service Runner
+# V2rayA Service Runner
 # -------------------------------
 passwall_service() {
     action="$1" # 'start', 'stop', 'restart', etc.
 
     if ! [ -x "$PASSWALL_SERVICE_DIR" ]; then
-        warn "Passwall service not found!"
+        warn "V2rayA service not found!"
         return 1 
     fi
 
     mkdir -p /tmp/etc/passwall
 
     if "$PASSWALL_SERVICE_DIR" "$action"; then
-        success "Passwall service '$action' command completed successfully."
+        success "V2rayA service '$action' command completed successfully."
         return 0
     else
-        error "Passwall service '$action' command failed."
+        error "V2rayA service '$action' command failed."
         return 1
     fi
 }
 
 
 # -------------------------------
-# Passwall Add Feeds
+# V2rayA Add Feeds
 # -------------------------------
 add_passwall_feeds() {
     [ -z "$RELEASE_MAJOR" ] && { error "RELEASE_MAJOR not set! Run get_openwrt_info first."; return 1; }
@@ -146,7 +146,7 @@ add_passwall_feeds() {
             ;;
     esac
 
-    info "Adding Passwall repositories for $RELEASE_TYPE ($RELEASE_MAJOR/$ARCH)..."
+    info "Adding V2rayA repositories for $RELEASE_TYPE ($RELEASE_MAJOR/$ARCH)..."
 
     for feed in $FEEDS; do
         if grep -q "$feed" /etc/opkg/customfeeds.conf 2>/dev/null; then

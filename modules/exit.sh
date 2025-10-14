@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# exit.sh - Exit Passwall Main Menu
+# exit.sh - Exit V2rayA Main Menu
 #========================================
 
 

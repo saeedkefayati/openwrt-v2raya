@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# restart.sh - Restart Passwall Service
+# restart.sh - Restart V2rayA Service
 #========================================
 
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# disable.sh - Disable Passwall Service
+# disable.sh - Disable V2rayA Service
 #========================================
 
 

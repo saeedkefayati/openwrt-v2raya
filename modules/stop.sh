@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# stop.sh - Stop Passwall Service
+# stop.sh - Stop V2rayA Service
 #========================================
 
 

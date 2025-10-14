@@ -15,10 +15,10 @@ PASSWALL_COMMAND="pw1"
 # Step 1: Clone or update repository
 # ================================
 if [ ! -d "$PASSWALL_INSTALL_DIR" ]; then
-    echo "[INFO] Cloning Passwall repository to $PASSWALL_INSTALL_DIR"
+    echo "[INFO] Cloning V2rayA repository to $PASSWALL_INSTALL_DIR"
     git clone "$REPO_URL" "$PASSWALL_INSTALL_DIR" || { echo "[ERROR] Failed to clone repo"; exit 1; }
 else
-    echo "[INFO] Updating Passwall repository at $PASSWALL_INSTALL_DIR"
+    echo "[INFO] Updating V2rayA repository at $PASSWALL_INSTALL_DIR"
     git -C "$PASSWALL_INSTALL_DIR" reset --hard
     git -C "$PASSWALL_INSTALL_DIR" clean -fd
     git -C "$PASSWALL_INSTALL_DIR" pull || { echo "[ERROR] Failed to update repo"; exit 1; }
@@ -47,5 +47,5 @@ echo "[INFO] Shortcut ready: run '$PASSWALL_COMMAND' from anywhere."
 # ================================
 # Step 4: Run main.sh
 # ================================
-echo "[INFO] Launching Passwall..."
+echo "[INFO] Launching V2rayA..."
 "$PASSWALL_INSTALL_DIR/main.sh"

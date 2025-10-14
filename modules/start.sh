@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# start.sh - Start Passwall Service
+# start.sh - Start V2rayA Service
 #========================================
 
 

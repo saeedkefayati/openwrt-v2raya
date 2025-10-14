@@ -1,6 +1,6 @@
 #!/bin/sh
 #========================================
-# enable.sh - Enable Passwall Service
+# enable.sh - Enable V2rayA Service
 #========================================
 
 

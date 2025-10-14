@@ -10,8 +10,8 @@ install_passwall() {
     check_command wget
     check_command uci
 
-    # Step 1: Add Passwall GPG key
-    info "Adding Passwall GPG key..."
+    # Step 1: Add V2rayA GPG key
+    info "Adding V2rayA GPG key..."
     if ! opkg-key list | grep -q passwall; then
         wget -O /tmp/passwall.pub https://master.dl.sourceforge.net/project/openwrt-passwall-build/passwall.pub
         opkg-key add /tmp/passwall.pub
@@ -26,8 +26,8 @@ install_passwall() {
     get_openwrt_info
     info "Detected OpenWrt $RELEASE_TYPE ($RELEASE) on $ARCH"
 
-    # Step 3: Add Passwall repositories
-    info "Adding Passwall repositories..."
+    # Step 3: Add V2rayA repositories
+    info "Adding V2rayA repositories..."
     add_passwall_feeds
 
     # Step 4: Update package lists
@@ -37,9 +37,9 @@ install_passwall() {
     # Step 5: Install V2rayA
     info "Installing V2rayA..."
     if opkg list-installed | grep -q "$PASSWALL_PACKAGE"; then
-        info "Passwall already installed, skipping."
+        info "V2rayA already installed, skipping."
     else
-        opkg install "$PASSWALL_PACKAGE" || { error "Failed to install Passwall"; return 1; }
+        opkg install "$PASSWALL_PACKAGE" || { error "Failed to install V2rayA"; return 1; }
     fi
 
     # Step 6: Install Package Dependency Based On OS Version
@@ -65,7 +65,7 @@ install_passwall() {
 
 
     # Step 7: Enable and start service
-    info "Enabling Passwall service settings..."
+    info "Enabling V2rayA service settings..."
     uci set passwall.@global[0].enabled='1'
     uci commit passwall
     

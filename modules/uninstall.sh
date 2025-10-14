@@ -4,16 +4,16 @@
 #========================================
 
 uninstall_passwall() {
-    # Step 1: Stop the Passwall service
-    info "Stopping Passwall service..."
+    # Step 1: Stop the V2rayA service
+    info "Stopping V2rayA service..."
     passwall_service stop
 
-    # Step 2: Remove the Passwall package
-    info "Removing Passwall package..."
+    # Step 2: Remove the V2rayA package
+    info "Removing V2rayA package..."
     opkg remove "$PASSWALL_PACKAGE" >/dev/null 2>&1 || warn "Package not found or failed to remove."
 
     # Step 3: Remove feeds
-    info "Removing Passwall repositories..."
+    info "Removing V2rayA repositories..."
     FEEDS="passwall_packages passwall_luci"
     for feed in $FEEDS; do
         if grep -q "$feed" /etc/opkg/customfeeds.conf; then
