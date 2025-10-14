@@ -53,7 +53,7 @@ install_v2raya() {
     fi
 
     ALL_DEPS="$COMMON_DEPS $FIREWALL_DEPS"
-    opkg install "$ALL_DEPS";
+    opkg install $ALL_DEPS
     success "Install firewall type to select correct dependencies..."
 
 
