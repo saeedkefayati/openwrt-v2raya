@@ -4,9 +4,9 @@
 #========================================
 
 
-start_passwall() {
+start_v2raya() {
     info "Starting V2rayA service..."
-    passwall_service start
+    v2raya_service start
     sleep 3
 }
 

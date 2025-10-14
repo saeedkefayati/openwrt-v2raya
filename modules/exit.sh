@@ -4,7 +4,7 @@
 #========================================
 
 
-exit_passwall() {
+exit_v2raya() {
     info "Exiting V2rayA..."
     exit 0
 }

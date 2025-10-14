@@ -4,9 +4,9 @@
 #========================================
 
 
-stop_passwall() {
+stop_v2raya() {
     info "Stopping V2rayA service..."
-    passwall_service stop
+    v2raya_service stop
     sleep 3
 }
 

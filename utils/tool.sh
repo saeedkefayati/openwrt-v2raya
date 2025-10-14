@@ -103,7 +103,7 @@ show_core_status() {
 # -------------------------------
 # V2rayA Service Runner
 # -------------------------------
-passwall_service() {
+v2raya_service() {
     action="$1" # 'start', 'stop', 'restart', etc.
 
     if ! [ -x "$PASSWALL_SERVICE_DIR" ]; then
@@ -111,7 +111,7 @@ passwall_service() {
         return 1 
     fi
 
-    mkdir -p /tmp/etc/passwall
+    mkdir -p /tmp/etc/v2raya
 
     if "$PASSWALL_SERVICE_DIR" "$action"; then
         success "V2rayA service '$action' command completed successfully."
@@ -126,23 +126,23 @@ passwall_service() {
 # -------------------------------
 # V2rayA Add Feeds
 # -------------------------------
-add_passwall_feeds() {
+add_v2raya_feeds() {
     [ -z "$RELEASE_MAJOR" ] && { error "RELEASE_MAJOR not set! Run get_openwrt_info first."; return 1; }
     [ -z "$ARCH" ] && { error "ARCH not set! Run get_openwrt_info first."; return 1; }
     [ -z "$RELEASE_TYPE" ] && { error "RELEASE_TYPE not set! Run get_openwrt_info first."; return 1; }
 
-    FEEDS="passwall_packages passwall_luci"
+    FEEDS="v2raya_packages v2raya_luci"
 
     case "$RELEASE_TYPE" in
         SNAPSHOT)
-            BASE_URL="https://master.dl.sourceforge.net/project/openwrt-passwall-build/snapshots/packages/$ARCH"
+            BASE_URL="https://master.dl.sourceforge.net/project/openwrt-v2raya-build/snapshots/packages/$ARCH"
             ;;
         RC|BETA|STABLE)
-            BASE_URL="https://master.dl.sourceforge.net/project/openwrt-passwall-build/releases/packages-$RELEASE_MAJOR/$ARCH"
+            BASE_URL="https://master.dl.sourceforge.net/project/openwrt-v2raya-build/releases/packages-$RELEASE_MAJOR/$ARCH"
             ;;
         *)
             warn "Unknown RELEASE_TYPE, defaulting to releases path"
-            BASE_URL="https://master.dl.sourceforge.net/project/openwrt-passwall-build/releases/packages-$RELEASE_MAJOR/$ARCH"
+            BASE_URL="https://master.dl.sourceforge.net/project/openwrt-v2raya-build/releases/packages-$RELEASE_MAJOR/$ARCH"
             ;;
     esac
 

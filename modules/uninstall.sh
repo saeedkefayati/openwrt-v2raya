@@ -3,10 +3,10 @@
 # uninstall.sh - Uninstall V2rayA
 #========================================
 
-uninstall_passwall() {
+uninstall_v2raya() {
     # Step 1: Stop the V2rayA service
     info "Stopping V2rayA service..."
-    passwall_service stop
+    v2raya_service stop
 
     # Step 2: Remove the V2rayA package
     info "Removing V2rayA package..."
@@ -14,7 +14,7 @@ uninstall_passwall() {
 
     # Step 3: Remove feeds
     info "Removing V2rayA repositories..."
-    FEEDS="passwall_packages passwall_luci"
+    FEEDS="v2raya_packages v2raya_luci"
     for feed in $FEEDS; do
         if grep -q "$feed" /etc/opkg/customfeeds.conf; then
             sed -i "/$feed/d" /etc/opkg/customfeeds.conf

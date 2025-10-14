@@ -4,9 +4,9 @@
 #========================================
 
 
-disable_passwall() {
+disable_v2raya() {
     info "Disabling V2rayA service..."
-    passwall_service disable
+    v2raya_service disable
     sleep 3
 }
 

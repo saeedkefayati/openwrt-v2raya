@@ -4,7 +4,7 @@
 #========================================
 
 
-update_passwall() {
+update_v2raya() {
     info "Updating package lists..."
     opkg update
     
@@ -15,7 +15,7 @@ update_passwall() {
     fi
 
     info "Restarting V2rayA service after update..."
-    passwall_service restart
+    v2raya_service restart
 
     success "Update completed successfully!"
     sleep 3

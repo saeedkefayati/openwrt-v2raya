@@ -4,9 +4,9 @@
 #========================================
 
 
-restart_passwall() {
+restart_v2raya() {
     info "Restarting V2rayA service..."
-    passwall_service restart
+    v2raya_service restart
     sleep 3
 }
 

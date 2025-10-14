@@ -3,7 +3,7 @@
 # install.sh - Install V2rayA
 #========================================
 
-install_passwall() {
+install_v2raya() {
 
     info "Checking required commands..."
     check_command opkg
@@ -12,10 +12,10 @@ install_passwall() {
 
     # Step 1: Add V2rayA GPG key
     info "Adding V2rayA GPG key..."
-    if ! opkg-key list | grep -q passwall; then
-        wget -O /tmp/passwall.pub https://master.dl.sourceforge.net/project/openwrt-passwall-build/passwall.pub
-        opkg-key add /tmp/passwall.pub
-        rm /tmp/passwall.pub
+    if ! opkg-key list | grep -q v2raya; then
+        wget -O /tmp/v2raya.pub https://master.dl.sourceforge.net/project/openwrt-v2raya-build/v2raya.pub
+        opkg-key add /tmp/v2raya.pub
+        rm /tmp/v2raya.pub
         success "GPG key added successfully."
     else
         info "GPG key already exists, skipping."
@@ -28,7 +28,7 @@ install_passwall() {
 
     # Step 3: Add V2rayA repositories
     info "Adding V2rayA repositories..."
-    add_passwall_feeds
+    add_v2raya_feeds
 
     # Step 4: Update package lists
     info "Updating package lists..."
@@ -51,11 +51,11 @@ install_passwall() {
     info "Detecting firewall type to select correct dependencies..."
     if check_command "fw4"; then
         info "Modern (fw4/nftables) system detected. Setting backend to nftables."
-        uci set passwall.@global[0].firewall_backend='nftables'
+        uci set v2raya.@global[0].firewall_backend='nftables'
         FIREWALL_DEPS="$MODERN_DEPS"
     else
         info "Legacy (fw3/iptables) system detected. Setting backend to iptables."
-        uci set passwall.@global[0].firewall_backend='iptables'
+        uci set v2raya.@global[0].firewall_backend='iptables'
         FIREWALL_DEPS="$LEGACY_DEPS"
     fi
 
@@ -66,18 +66,18 @@ install_passwall() {
 
     # Step 7: Enable and start service
     info "Enabling V2rayA service settings..."
-    uci set passwall.@global[0].enabled='1'
-    uci commit passwall
+    uci set v2raya.@global[0].enabled='1'
+    uci commit v2raya
     
     info "Enabling service on boot..."
-    passwall_service enable
+    v2raya_service enable
 
     info "Stopping service to apply new settings..."
-    passwall_service stop
+    v2raya_service stop
     sleep 2
 
     info "Starting service with new settings..."
-    passwall_service start
+    v2raya_service start
 
     success "V2rayA installation completed successfully!"
     sleep 3

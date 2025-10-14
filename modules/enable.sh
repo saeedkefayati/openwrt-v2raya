@@ -4,9 +4,9 @@
 #========================================
 
 
-enable_passwall() {
+enable_v2raya() {
     info "Enabling V2rayA service..."
-    passwall_service enable
+    v2raya_service enable
     sleep 3
 }
 
