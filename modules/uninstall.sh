@@ -3,29 +3,34 @@
 # uninstall.sh - Uninstall V2rayA
 #========================================
 
-
 uninstall_v2raya() {
-    # Step 1: Stop the V2rayA service
-    info "Stopping V2rayA service..."
+    # Step 1: Stop and disable the V2rayA service
+    info "Stopping and disabling V2rayA service..."
     v2raya_service stop
+    v2raya_service disable
 
     # Step 2: Remove the V2rayA package
     info "Removing V2rayA package..."
     opkg remove "$V2RAYA_PACKAGE" >/dev/null 2>&1 || warn "Package not found or failed to remove."
 
-    # Step 3: Remove feeds
+    # Step 3: Cleanup leftover files and configurations
+    info "Cleaning up leftover files and configurations..."
+
     info "Removing V2rayA repositories..."
-    FEED_NAME="v2raya"
     if grep -q "$FEED_NAME" "$CUSTOM_FEEDS_FILE"; then
         sed -i "/$FEED_NAME/d" "$CUSTOM_FEEDS_FILE"
         success "Removed feed: $FEED_NAME"
     fi
-
+    
     # Step 4: Remove files and directories
-    info "Removing custom script files..."
+    info "Removing V2rayA files and directories..."
     [ -f "$V2RAYA_BIN_DIR" ] && rm -f "$V2RAYA_BIN_DIR" && success "Removed command: $V2RAYA_BIN_DIR"
-    # info "Removing main script directory..."
-    # [ -d "$V2RAYA_INSTALL_DIR" ] && rm -rf "$V2RAYA_INSTALL_DIR" && success "Removed directory: $V2RAYA_INSTALL_DIR"
+    
+    # Remove the service script file left by opkg
+    [ -f "$V2RAYA_SERVICE_DIR" ] && rm -f "$V2RAYA_SERVICE_DIR" && success "Removed service script."
+    
+    # Remove the UCI config file
+    [ -f "/etc/config/v2raya" ] && rm -f "/etc/config/v2raya" && success "Removed UCI config file."
 
     # Step 5: Update package lists
     info "Updating package lists..."
