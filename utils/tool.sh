@@ -87,7 +87,7 @@ show_core_status() {
         if [ ! -x "$path" ]; then
             status="${RED}Not Installed${NC}"
         else
-            if ps -w | grep -v "grep" | grep -q -E "xray|sing-box|hysteria"; then
+            if ps -w | grep -v "grep" | grep -q -E "xray|v2ray"; then
                 status="${GREEN}Running${NC}"
             else
                 status="${YELLOW}Stopped${NC}"
@@ -111,8 +111,6 @@ v2raya_service() {
         return 1 
     fi
 
-    mkdir -p /tmp/etc/v2raya
-
     if "$V2RAYA_SERVICE_DIR" "$action"; then
         success "V2rayA service '$action' command completed successfully."
         return 0
@@ -131,29 +129,24 @@ add_v2raya_feeds() {
     [ -z "$ARCH" ] && { error "ARCH not set! Run get_openwrt_info first."; return 1; }
     [ -z "$RELEASE_TYPE" ] && { error "RELEASE_TYPE not set! Run get_openwrt_info first."; return 1; }
 
-    FEEDS="v2raya_packages v2raya_luci"
+    FEED_NAME="v2raya"
 
     case "$RELEASE_TYPE" in
-        SNAPSHOT)
-            BASE_URL="https://master.dl.sourceforge.net/project/openwrt-v2raya-build/snapshots/packages/$ARCH"
-            ;;
-        RC|BETA|STABLE)
-            BASE_URL="https://master.dl.sourceforge.net/project/openwrt-v2raya-build/releases/packages-$RELEASE_MAJOR/$ARCH"
+        SNAPSHOT|RC|BETA|STABLE)
+            BASE_URL="https://downloads.sourceforge.net/project/v2raya/openwrt/$ARCH"
             ;;
         *)
             warn "Unknown RELEASE_TYPE, defaulting to releases path"
-            BASE_URL="https://master.dl.sourceforge.net/project/openwrt-v2raya-build/releases/packages-$RELEASE_MAJOR/$ARCH"
+            BASE_URL="https://downloads.sourceforge.net/project/v2raya/openwrt/$ARCH"
             ;;
     esac
 
     info "Adding V2rayA repositories for $RELEASE_TYPE ($RELEASE_MAJOR/$ARCH)..."
 
-    for feed in $FEEDS; do
-        if grep -q "$feed" /etc/opkg/customfeeds.conf 2>/dev/null; then
-            info "Feed $feed already exists, skipping."
-        else
-            echo "src/gz $feed $BASE_URL/$feed" >> /etc/opkg/customfeeds.conf
-            success "Added feed: $feed"
-        fi
-    done
+    if grep -q "$FEED_NAME" "$CUSTOM_FEEDS_FILE" 2>/dev/null; then
+        info "Feed $FEED_NAME already exists, skipping."
+    else
+        echo "src/gz $FEED_NAME $BASE_URL/$FEED_NAME" >> "$CUSTOM_FEEDS_FILE"
+        success "Added feed: $FEED_NAME"
+    fi
 }

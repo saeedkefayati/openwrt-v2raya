@@ -3,6 +3,7 @@
 # uninstall.sh - Uninstall V2rayA
 #========================================
 
+
 uninstall_v2raya() {
     # Step 1: Stop the V2rayA service
     info "Stopping V2rayA service..."
@@ -14,13 +15,11 @@ uninstall_v2raya() {
 
     # Step 3: Remove feeds
     info "Removing V2rayA repositories..."
-    FEEDS="v2raya_packages v2raya_luci"
-    for feed in $FEEDS; do
-        if grep -q "$feed" /etc/opkg/customfeeds.conf; then
-            sed -i "/$feed/d" /etc/opkg/customfeeds.conf
-            success "Removed feed: $feed"
-        fi
-    done
+    FEED_NAME="v2raya"
+    if grep -q "$FEED_NAME" "$CUSTOM_FEEDS_FILE"; then
+        sed -i "/$FEED_NAME/d" "$CUSTOM_FEEDS_FILE"
+        success "Removed feed: $FEED_NAME"
+    fi
 
     # Step 4: Remove files and directories
     info "Removing custom script files..."

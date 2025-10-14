@@ -3,8 +3,8 @@
 # install.sh - Install V2rayA
 #========================================
 
-install_v2raya() {
 
+install_v2raya() {
     info "Checking required commands..."
     check_command opkg
     check_command wget
@@ -13,7 +13,7 @@ install_v2raya() {
     # Step 1: Add V2rayA GPG key
     info "Adding V2rayA GPG key..."
     if ! opkg-key list | grep -q v2raya; then
-        wget -O /tmp/v2raya.pub https://master.dl.sourceforge.net/project/openwrt-v2raya-build/v2raya.pub
+        wget -O /tmp/v2raya.pub https://master.dl.sourceforge.net/project/v2raya/openwrt/v2raya.pub
         opkg-key add /tmp/v2raya.pub
         rm /tmp/v2raya.pub
         success "GPG key added successfully."
@@ -43,30 +43,23 @@ install_v2raya() {
     fi
 
     # Step 6: Install Package Dependency Based On OS Version
-    info "remove dnsmasq & install dnsmasq-full package"
-    opkg remove dnsmasq
-    opkg install dnsmasq-full
-
-
     info "Detecting firewall type to select correct dependencies..."
     if check_command "fw4"; then
         info "Modern (fw4/nftables) system detected. Setting backend to nftables."
-        uci set v2raya.@global[0].firewall_backend='nftables'
         FIREWALL_DEPS="$MODERN_DEPS"
     else
         info "Legacy (fw3/iptables) system detected. Setting backend to iptables."
-        uci set v2raya.@global[0].firewall_backend='iptables'
         FIREWALL_DEPS="$LEGACY_DEPS"
     fi
 
     ALL_DEPS="$COMMON_DEPS $FIREWALL_DEPS"
-    opkg install $ALL_DEPS;
+    opkg install "$ALL_DEPS";
     success "Install firewall type to select correct dependencies..."
 
 
     # Step 7: Enable and start service
     info "Enabling V2rayA service settings..."
-    uci set v2raya.@global[0].enabled='1'
+    uci set v2raya.config.enabled='1'
     uci commit v2raya
     
     info "Enabling service on boot..."

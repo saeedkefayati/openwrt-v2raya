@@ -35,6 +35,7 @@ while true; do
     clear_terminal
     show_banner
     show_centered_text "Now you can use '${V2RAYA_COMMAND}' command"
+    show_centered_text "http://<your_router_ip>:2017"
     show_separator
     show_openwrt_info
     show_core_status
