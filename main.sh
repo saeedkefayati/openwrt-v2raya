@@ -42,7 +42,7 @@ while true; do
     show_core_status
 
     echo "Select an operation for V2rayA:"
-    i=1
+    i=0
     while true; do
         eval entry=\$MENU_${i}
         [ -z "$entry" ] && break
