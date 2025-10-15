@@ -16,6 +16,7 @@ SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 . "${SCRIPT_DIR}/modules/install.sh"
 . "${SCRIPT_DIR}/modules/update.sh"
 . "${SCRIPT_DIR}/modules/uninstall.sh"
+. "${SCRIPT_DIR}/modules/iran.sh"
 . "${SCRIPT_DIR}/modules/start.sh"
 . "${SCRIPT_DIR}/modules/stop.sh"
 . "${SCRIPT_DIR}/modules/restart.sh"
