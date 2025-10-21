@@ -8,7 +8,7 @@ iran_v2raya() {
     info "Change IRAN V2rayA Rule..."
 
     info "Updating package lists..."
-    opkg update || { error "Failed to update package lists"; return 1; }
+    opkg update
     
     info "Installing dependencies (wget-ssl)..."
     opkg install wget-ssl
@@ -31,7 +31,7 @@ iran_v2raya() {
     else
         error "ERROR: No running v2ray or xray core found!"
         warn "Please ensure v2raya service is running before executing this script."
-        # return 1
+        return 1
     fi
     
     info "Target directory set to: $TARGET_DIR"
@@ -42,20 +42,22 @@ iran_v2raya() {
     wget -O "$TARGET_DIR/geoip.dat" https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/geoip.dat
     if [ $? -ne 0 ]; then
         error "Failed to download geoip.dat"
-        # return 1
+        return 1
     fi
 
     info "Downloading geosite.dat (overwriting)..."
     wget -O "$TARGET_DIR/geosite.dat" https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/geosite.dat
     if [ $? -ne 0 ]; then
         error "Failed to download geosite.dat"
-        # return 1
+        return 1
     fi
     
     success "IRAN Rules for $TARGET_DIR (overwrite) updated successfully."
+    sleep 2
 
     info "Restarting v2raya service to apply changes."
     v2raya_service restart
+    sleep 2
 
     warn "now open your v2raya ui interface & add these setting to active this iran rules"
     warn "open setting on your v2raya ui & check exactly like these setting below (very Important!)"
