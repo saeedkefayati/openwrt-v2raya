@@ -29,9 +29,9 @@ iran_v2raya() {
         TARGET_DIR="/usr/share/v2ray"
 
     else
-        info "ERROR: No running v2ray or xray core found!"
-        info "Please ensure v2raya service is running before executing this script."
-        return 1
+        error "ERROR: No running v2ray or xray core found!"
+        warn "Please ensure v2raya service is running before executing this script."
+        # return 1
     fi
     
     info "Target directory set to: $TARGET_DIR"
@@ -41,15 +41,15 @@ iran_v2raya() {
     info "Downloading geoip.dat (overwriting)..."
     wget -O "$TARGET_DIR/geoip.dat" https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/geoip.dat
     if [ $? -ne 0 ]; then
-        info "Failed to download geoip.dat"
-        return 1
+        error "Failed to download geoip.dat"
+        # return 1
     fi
 
     info "Downloading geosite.dat (overwriting)..."
     wget -O "$TARGET_DIR/geosite.dat" https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/geosite.dat
     if [ $? -ne 0 ]; then
-        info "Failed to download geosite.dat"
-        return 1
+        error "Failed to download geosite.dat"
+        # return 1
     fi
     
     success "IRAN Rules for $TARGET_DIR (overwrite) updated successfully."
