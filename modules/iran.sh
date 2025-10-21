@@ -55,9 +55,9 @@ iran_v2raya() {
     success "IRAN Rules for $TARGET_DIR (overwrite) updated successfully."
     sleep 2
 
-    info "Restarting v2raya service to apply changes."
-    v2raya_service restart
-    sleep 2
+    # info "Restarting v2raya service to apply changes."
+    # v2raya_service restart
+    # sleep 2
 
     warn "now open your v2raya ui interface & add these setting to active this iran rules"
     warn "open setting on your v2raya ui & check exactly like these setting below (very Important!)"
