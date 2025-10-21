@@ -1,7 +1,6 @@
 #!/bin/sh
 #========================================
 # iran.sh - IRAN V2rayA Service
-# (Smart Core-Detecting & Overwriting Version)
 #========================================
 
 iran_v2raya() {
@@ -39,29 +38,29 @@ iran_v2raya() {
     mkdir -p "$TARGET_DIR"
 
     info "Downloading geoip.dat (overwriting)..."
-    wget -O "$TARGET_DIR/geoip.dat" https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/geoip.dat
+    wget -q -O "$TARGET_DIR/geoip.dat" https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/geoip.dat
     if [ $? -ne 0 ]; then
         error "Failed to download geoip.dat"
         return 1
     fi
+    success "geoip.dat overwrited..."
 
     info "Downloading geosite.dat (overwriting)..."
-    wget -O "$TARGET_DIR/geosite.dat" https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/geosite.dat
+    wget -q -O "$TARGET_DIR/geosite.dat" https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/release/geosite.dat
     if [ $? -ne 0 ]; then
         error "Failed to download geosite.dat"
         return 1
     fi
-    
+    success "geosite.dat overwrited..."
     success "IRAN Rules for $TARGET_DIR (overwrite) updated successfully."
-    sleep 2
 
-    # info "Restarting v2raya service to apply changes."
-    # v2raya_service restart
-    # sleep 2
+    info "Restarting v2raya service to apply changes."
+    v2raya_service restart
 
     warn "now open your v2raya ui interface & add these setting to active this iran rules"
     warn "open setting on your v2raya ui & check exactly like these setting below (very Important!)"
 
+    show_separator
     # Transparent Proxy/System Proxy
     printf "%-12s : %b\n" "Transparent Proxy/System Proxy" "On: Traffic Splitting Mode is the Same as the Rule Port"
     printf "%-12s : %b\n" "Transparent Proxy/System Proxy" "IP Forward"
@@ -79,7 +78,7 @@ iran_v2raya() {
     printf "%-12s : %b\n" "Automatically Update Subscriptions" "720"
 
     printf "%-12s : %b\n" "Mode when Update Subscriptions and GFWList" "Follows Transparent Proxy/System Proxy"
-
+    show_separator
     show_separator
     show_centered_text "After checking settings, go to 'Setting' -> 'RoutingA' tab."
     show_centered_text "Copy ALL the rules below and paste them into the 'Custom Rules' box:"
@@ -157,4 +156,5 @@ iran_v2raya() {
 EOF
 
     info "After pasting the rules, click 'Save & Apply'."
+    read -p "Press [Enter] to continue..."
 }
