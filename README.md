@@ -59,7 +59,7 @@ sh <(wget -qO- https://cdn.statically.io/gh/saeedkefayati/openwrt-V2rayA/main/in
 
 <br/>
 
-## Iran Direct Setting
+## Iran Direct Setting (should use after using option 4 in menu)
 
 # General Settings
 
